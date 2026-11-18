@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Questionnaire for clients of Stephanie Naughton Personal Styling.">
+<meta name="theme-color" content="#F4EEE6">
+<title>Questionnaire · Stephanie Naughton Personal Styling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..400;1,6..72,300..400&family=Archivo:wght@300..400&family=Tenor+Sans&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+  :root{
+    --cream:#F4EEE6; --paper:#FBF8F3; --taupe:#8C7565; --taupe-soft:#D8CBBD; --line:#CDBFB0;
+    --ink:#3B302A; --muted:#7D6E63; --tape:#6B4F40; --danger:#8A3B2E;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none !important}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:56px 20px 88px}
+  .mono{display:flex;justify-content:center;align-items:center;gap:12px;margin:0 0 36px}
+  .mono i{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:0.5px solid var(--taupe);font-family:'Tenor Sans',serif;font-style:normal;font-size:12px;letter-spacing:.12em}
+  .mono span{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+  h1,h2{font-family:Newsreader,Georgia,serif;font-weight:300;margin:0}
+  h1{font-size:46px;line-height:1.08;text-align:center;margin-bottom:14px}
+  h1 em,h2 em{font-style:italic}
+  .intro{text-align:center;color:var(--muted);max-width:470px;margin:0 auto 40px;font-size:15px}
+  .progress{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+  .progress span{height:2px;background:var(--taupe-soft);transition:background .3s}
+  .progress span.on{background:var(--taupe)}
+  .step-count{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+  .panel{background:var(--paper);border:1px solid var(--taupe-soft);padding:44px 40px}
+  h2{font-size:32px;margin-bottom:24px}
+  .lede{color:var(--muted);margin:-12px 0 30px;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px}
+  .full{grid-column:1/-1}
+  label,.label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);margin-bottom:2px}
+  .req{color:var(--taupe)}
+  input[type=text],input[type=email],input[type=tel],input[type=number]{
+    width:100%;height:38px;padding:6px 0;border:0;border-bottom:1px solid var(--taupe-soft);background:transparent;
+    font:inherit;font-size:16px;color:var(--ink);border-radius:0;transition:border-color .2s, box-shadow .2s
+  }
+  textarea{width:100%;min-height:100px;padding:12px;border:1px solid var(--taupe-soft);background:transparent;font:inherit;font-size:16px;color:var(--ink);border-radius:0;resize:vertical;transition:border-color .2s}
+  input:focus,textarea:focus{outline:none;border-color:var(--ink)}
+  input:focus{box-shadow:0 1px 0 0 var(--ink)}
+  input::placeholder,textarea::placeholder{color:#B3A599}
+  .hint{font-size:13px;color:var(--muted);margin:7px 0 0;line-height:1.5;text-transform:none;letter-spacing:0}
+
+  /* long question labels read as serif, not small caps */
+  .qs label,.qs .label{font:300 18px/1.35 Newsreader,Georgia,serif;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:8px}
+  .qs .req{color:var(--taupe)}
+  .qs .hint{margin:-2px 0 12px}
+  .qs .hint.gap{margin-bottom:14px}
+  .qs .hint.flush{margin-top:0}
+  .mset{margin-top:28px}
+  .block{margin-top:36px}
+
+  /* body shape cards */
+  .shapes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  label.shape{position:relative;display:block;font:400 16px/1.6 Archivo,system-ui,sans-serif;border:1px solid var(--taupe-soft);background:transparent;padding:18px 10px 16px;text-align:center;cursor:pointer;transition:all .2s;text-transform:none;letter-spacing:0;color:var(--ink);margin:0}
+  .shape input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+  .shape .name{font-family:Newsreader,serif;font-size:21px;font-style:italic;display:block}
+  .shape small{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+  .shape svg{display:block;width:34px;height:54px;margin:0 auto 10px;color:var(--taupe);transition:color .2s}
+  .shape:has(input:checked) svg{color:#fff}
+  .shape:hover{border-color:var(--taupe)}
+  .shape:has(input:checked){background:var(--taupe);border-color:var(--taupe);color:#fff}
+  .shape:has(input:checked) small{color:rgba(255,255,255,.85)}
+  .shape:has(input:focus-visible){outline:2px solid var(--taupe);outline-offset:2px}
+
+  /* retailer sizes */
+  table.sizes{width:100%;border-collapse:collapse;font-size:14px}
+  table.sizes th{font-weight:400;text-align:left;color:var(--taupe);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:0 10px 4px 0}
+  table.sizes td{padding:0 10px 4px 0}
+  table.sizes input{height:34px;font-size:16px}
+  table.sizes td.x{width:36px;padding:0}
+  .link{background:none;border:none;color:var(--taupe);text-decoration:underline;text-underline-offset:3px;padding:10px 0 0;font:inherit;font-size:14px;cursor:pointer}
+  .remove{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;line-height:1;padding:6px}
+  .remove:hover{color:var(--danger)}
+
+  /* measurement diagram: figure with the four inputs beside it */
+  .dgwrap{margin:6px auto 0}
+  .dg{position:relative;width:340px;height:352px;transform-origin:0 0}
+  .dg svg{position:absolute;left:0;top:0;width:340px;height:352px}
+  .dg .tp{transition:opacity .2s}
+  .rw-col{position:absolute;left:230px;right:0;top:0;display:flex;flex-direction:column;gap:0}
+  .rw{height:88px}
+  .rw label{display:flex;align-items:flex-end;gap:.35em;height:26px;margin-bottom:0;font-size:10.5px;letter-spacing:.1em;line-height:1.25}
+  .rw input{height:30px;padding:2px 0}
+  .rw.on input{border-bottom-color:var(--ink)}
+  .rw .rn{display:block;min-height:32px;margin-top:0;line-height:1.25;font:italic 300 13px Newsreader,Georgia,serif;color:var(--muted);text-transform:none;letter-spacing:0}
+  .mhead{max-width:340px;margin:0 auto 10px}
+  .mhead svg{display:block;width:44px;height:20px;margin-bottom:6px;overflow:visible}
+  .mhead .mt{display:block;font:300 18px/1.35 Newsreader,Georgia,serif;color:var(--ink)}
+  .mhead .ms{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+  .rw .hf{display:block;width:max-content;min-height:32px;margin-top:0;line-height:1.25;font:italic 300 13px Newsreader,Georgia,serif;color:var(--taupe);cursor:pointer;text-transform:none;letter-spacing:0}
+  .rw .hf:hover,.rw.on .hf{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+  .rw .hf:focus-visible{outline:2px solid var(--taupe);outline-offset:2px}
+  #helpbox{max-width:340px;margin:0 auto;font-size:13px;font-weight:300;line-height:1.6;color:#5A4A40}
+  #helpbox p{margin:0}
+  #helpbox .ht{display:block;font:italic 300 16px Newsreader,Georgia,serif;color:var(--ink);margin-bottom:2px}
+
+  /* photos */
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .slots{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+  .slot{position:relative;display:block;min-height:250px;border:1px dashed var(--taupe);background:transparent;cursor:pointer;overflow:hidden;text-align:center;text-transform:none;letter-spacing:0;color:var(--ink);margin:0;transition:background .2s}
+  .slot:hover,.slot:focus-within{background:#FDFAF5}
+  .slot .in{position:relative;display:flex;flex-direction:column;align-items:center;min-height:250px;padding:22px 10px 18px}
+  .slot .num{font:300 13px Archivo,sans-serif;letter-spacing:.14em;color:var(--taupe)}
+  .slot .t{font:italic 300 21px/1.2 Newsreader,Georgia,serif;margin-top:6px}
+  .slot .sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+  .slot .add{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);margin-top:auto;padding-top:12px}
+  .slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .slot.filled{border-style:solid;border-color:var(--taupe-soft)}
+  .slot .cap{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;background:rgba(251,248,243,.92);font:300 12.5px Archivo,sans-serif;color:var(--ink)}
+  .slot button{position:absolute;top:6px;right:6px;width:28px;height:28px;border:none;border-radius:50%;background:rgba(251,248,243,.95);color:var(--ink);cursor:pointer;font-size:16px;line-height:28px;padding:0;z-index:2}
+  @media(min-width:760px){.slots{grid-template-columns:repeat(4,1fr)}}
+  .photoinfo{background:var(--cream);border-left:2px solid var(--taupe);padding:18px 20px 12px;margin:4px 0 0}
+  .photoinfo .pi-title{margin:0 0 10px;font:italic 300 20px/1.3 Newsreader,Georgia,serif;color:var(--ink)}
+  .photoinfo ul{list-style:none;padding:0;margin:0}
+  .photoinfo li{position:relative;padding-left:18px;margin-bottom:8px;font-size:15px;line-height:1.5;color:var(--ink)}
+  .photoinfo li::before{content:"";position:absolute;left:0;top:.75em;width:7px;height:1px;background:var(--ink)}
+
+  label.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;margin-top:28px;text-transform:none;letter-spacing:0;color:var(--ink)}
+  .consent input{margin-top:5px;accent-color:var(--taupe);width:16px;height:16px;flex:none}
+
+  .buttons{display:flex;justify-content:space-between;align-items:center;margin-top:40px;gap:12px}
+  .btn{font:inherit;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:15px 30px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:opacity .2s}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn:disabled{opacity:.5;cursor:wait}
+  .btn:focus-visible,.link:focus-visible,.remove:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
+  .error{color:var(--danger);font-size:14px;min-height:1.4em;margin:18px 0 0;text-align:center}
+  .cf{margin-top:26px;display:flex;justify-content:center}
+
+  .hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+
+  .done{text-align:center;background:var(--paper);border:1px solid var(--taupe-soft);padding:64px 32px}
+  .done h2{font-size:38px;margin-bottom:14px}
+  .done p{color:var(--muted);max-width:420px;margin:0 auto}
+  .ref{margin-top:28px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
+
+  @media (max-width:600px){
+    h1{font-size:38px}
+    .panel{padding:30px 22px}
+    .grid{grid-template-columns:1fr}
+    .grid.two{grid-template-columns:1fr 1fr;gap:14px 18px}
+    .shapes{grid-template-columns:repeat(2,1fr)}
+    .buttons{flex-direction:column-reverse;align-items:stretch}
+    .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="mono"><i>Stephanie Naughton</i><span>Personal styling</span></div>
+  <h1>Style <em>Questionnaire</em></h1>
+  <p class="intro">Thank you for taking the time. Your answers help me understand your true size and shape, so everything I recommend fits you properly.</p>
+
+  <div class="progress" id="progress" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <p class="step-count" id="stepCount">Step 1 of 4</p>
+
+  <form id="intake" novalidate>
+    <!-- Honeypot: hidden from people, filled in by bots -->
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <!-- STEP 1: CONTACT -->
+    <section class="panel step" data-step="0">
+      <h2>Contact <em>information</em></h2>
+      <div class="grid">
+        <div class="full">
+          <label for="name">Name&nbsp;<span class="req">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email&nbsp;<span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="mobile">Mobile&nbsp;<span class="req">*</span></label>
+          <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+        </div>
+        <div class="full">
+          <label for="address_1">Address line 1&nbsp;<span class="req">*</span></label>
+          <input type="text" id="address_1" name="address_1" autocomplete="address-line1" required>
+        </div>
+        <div class="full">
+          <label for="address_2">Address line 2</label>
+          <input type="text" id="address_2" name="address_2" autocomplete="address-line2">
+        </div>
+        <div>
+          <label for="postcode">Postcode / ZIP&nbsp;<span class="req">*</span></label>
+          <input type="text" id="postcode" name="postcode" autocomplete="postal-code" required>
+        </div>
+        <div>
+          <label for="country">Country&nbsp;<span class="req">*</span></label>
+          <input type="text" id="country" name="country" value="United Kingdom" autocomplete="country-name" required>
+        </div>
+      </div>
+      <div class="buttons">
+        <span></span>
+        <button type="button" class="btn" data-next>Next</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: PERSONAL INFORMATION -->
+    <section class="panel step" data-step="1" hidden>
+      <h2>Personal <em>information</em></h2>
+      <div class="grid two">
+        <div>
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="16" max="120" inputmode="numeric">
+        </div>
+        <div>
+          <label for="height_cm">Height (cm)&nbsp;<span class="req">*</span></label>
+          <input type="number" id="height_cm" name="height_cm" min="100" max="230" step="0.1" inputmode="decimal" required>
+        </div>
+        <div>
+          <label for="bra_size">Bra size</label>
+          <input type="text" id="bra_size" name="bra_size">
+        </div>
+        <div>
+          <label for="shoe_size">Shoe size</label>
+          <input type="text" id="shoe_size" name="shoe_size">
+        </div>
+        <div>
+          <label for="dress_top">Dress size (top)</label>
+          <input type="text" id="dress_top" name="dress_top">
+        </div>
+        <div>
+          <label for="dress_bottoms">Dress size (bottoms)</label>
+          <input type="text" id="dress_bottoms" name="dress_bottoms">
+        </div>
+        <div>
+          <label for="hair_colour">Hair colour</label>
+          <input type="text" id="hair_colour" name="hair_colour">
+        </div>
+        <div>
+          <label for="skin_tone">Skin tone</label>
+          <input type="text" id="skin_tone" name="skin_tone" placeholder="e.g. fair, olive">
+        </div>
+      </div>
+
+      <div class="mset">
+        <div class="mhead"><svg viewBox="0 0 44 20" aria-hidden="true"><path d="M3,10 A19,8 0 0 1 41,10" fill="none" stroke="#8C7565" stroke-width="1.2" stroke-dasharray="3 3"/><path d="M3,10 A19,8 0 0 0 41,10" fill="none" stroke="#6B4F40" stroke-width="2.5"/></svg><span class="mt">Half body</span><span class="ms">Measure the front half only, from one side of your body to the other. All measurements in cm.</span></div>
+        <div class="dgwrap">
+          <div class="dg">
+            <svg role="img" aria-label="Front-view figure with four measuring tapes across the front half: shoulder, bust, waist and hips"><g transform="translate(-170,-5) scale(0.9)"><ellipse cx="300" cy="56" rx="28" ry="34" fill="#FBF8F3" stroke="#CDBFB0" stroke-width="0.8"/><path fill="#FBF8F3" stroke="#CDBFB0" stroke-width="0.8" d="M272,88 Q246,96 240,112 Q228,148 220,196 L212,238 L230,243 L242,200 Q248,178 252,160 Q258,184 264,205 Q252,228 244,262 L266,450 L294,450 L300,300 L306,450 L334,450 L356,262 Q348,228 336,205 Q342,184 348,160 Q352,178 358,200 L370,243 L388,238 L380,196 Q372,148 360,112 Q354,96 328,88 Z"/><g class="tp" id="t-shoulder"><path d="M244,100 A56,3 0 0 0 356,100" fill="none" stroke="#6B4F40" stroke-width="2"/><circle cx="244" cy="100" r="3" fill="#6B4F40"/><circle cx="356" cy="100" r="3" fill="#6B4F40"/></g><g class="tp" id="t-bust"><path d="M252,158 A48,7 0 0 0 348,158" fill="none" stroke="#6B4F40" stroke-width="2"/><circle cx="252" cy="158" r="3" fill="#6B4F40"/><circle cx="348" cy="158" r="3" fill="#6B4F40"/></g><g class="tp" id="t-waist"><path d="M264,205 A36,6 0 0 0 336,205" fill="none" stroke="#6B4F40" stroke-width="2"/><circle cx="264" cy="205" r="3" fill="#6B4F40"/><circle cx="336" cy="205" r="3" fill="#6B4F40"/></g><g class="tp" id="t-hips"><path d="M244,262 A56,8 0 0 0 356,262" fill="none" stroke="#6B4F40" stroke-width="2"/><circle cx="244" cy="262" r="3" fill="#6B4F40"/><circle cx="356" cy="262" r="3" fill="#6B4F40"/></g></g><g stroke="#CDBFB0" stroke-width="0.7"><line x1="154" y1="85" x2="226" y2="73"/><line x1="147" y1="137" x2="226" y2="161"/><line x1="136" y1="180" x2="226" y2="249"/><line x1="154" y1="231" x2="226" y2="337"/></g></svg>
+            <div class="rw-col">
+              <div class="rw" id="r-shoulder">
+                <label for="shoulder_cm">Shoulder width</label>
+                <span class="hf" role="button" tabindex="0" aria-expanded="false" aria-controls="helpbox">How to find</span>
+                <input type="number" id="shoulder_cm" name="shoulder_cm" min="20" max="70" step="0.1" inputmode="decimal">
+              </div>
+              <div class="rw" id="r-bust">
+                <label for="bust_cm">Bust&nbsp;<span class="req">*</span></label>
+                <span class="rn">fullest part of your bust</span>
+                <input type="number" id="bust_cm" name="bust_cm" min="25" max="100" step="0.1" inputmode="decimal" required>
+              </div>
+              <div class="rw" id="r-waist">
+                <label for="waist_cm">Waist&nbsp;<span class="req">*</span></label>
+                <span class="rn">narrowest part of your waist</span>
+                <input type="number" id="waist_cm" name="waist_cm" min="20" max="90" step="0.1" inputmode="decimal" required>
+              </div>
+              <div class="rw" id="r-hips">
+                <label for="hips_cm">Hips&nbsp;<span class="req">*</span></label>
+                <span class="rn">fullest part of your hips</span>
+                <input type="number" id="hips_cm" name="hips_cm" min="25" max="100" step="0.1" inputmode="decimal" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="helpbox" hidden>
+          <span class="ht">How to find shoulder width</span>
+          <p>Press your fingertip along the hard area on top of your shoulder and walk it outwards. The bone is firm and will not sink in. Once you reach a part that sinks in a little and feels softer, that is your point. Measure from this point to the same point on your other shoulder, in a very slightly curved line across the top of your shoulders.</p>
+        </div>
+      </div>
+
+      <div class="qs block">
+        <span class="label" id="shapeLabel">What body shape do you believe yourself to be?</span>
+        <p class="hint gap">Most people are a mixture of at least 2 shapes. Select all the ones that you believe are relevant to you.</p>
+        <div class="shapes" role="group" aria-labelledby="shapeLabel">
+          <label class="shape"><input type="checkbox" name="body_shape" value="Pear"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M16,12 Q12,14 12,19 Q14,28 14,31 Q8,37 8,44 L10,58 L30,58 L32,44 Q32,37 26,31 Q26,28 28,19 Q28,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><span class="name">Pear</span><small>Narrower shoulders, fuller hips</small></label>
+          <label class="shape"><input type="checkbox" name="body_shape" value="Apple"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M16,12 Q10,14 10,19 Q9,28 9,31 Q11,37 11,44 L13,58 L27,58 L29,44 Q29,37 31,31 Q31,28 30,19 Q30,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><span class="name">Apple</span><small>Fuller through the middle</small></label>
+          <label class="shape"><input type="checkbox" name="body_shape" value="Hourglass"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M16,12 Q10,14 10,19 Q14,28 14,31 Q10,37 10,44 L12,58 L28,58 L30,44 Q30,37 26,31 Q26,28 30,19 Q30,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><span class="name">Hourglass</span><small>Balanced, defined waist</small></label>
+          <label class="shape"><input type="checkbox" name="body_shape" value="Rectangle"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M16,12 Q11,14 11,19 Q11.5,28 11.5,31 Q11,37 11,44 L13,58 L27,58 L29,44 Q29,37 28.5,31 Q28.5,28 29,19 Q29,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><span class="name">Rectangle</span><small>Even shoulders, hips and waist</small></label>
+          <label class="shape"><input type="checkbox" name="body_shape" value="Strawberry"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M16,12 Q7,14 7,19 Q12,28 12,31 Q12,37 12,44 L14,58 L26,58 L28,44 Q28,37 28,31 Q28,28 33,19 Q33,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><span class="name">Strawberry</span><small>Broader shoulders, slimmer hips</small></label>
+          <label class="shape"><input type="checkbox" name="body_shape" value="Not sure"><svg viewBox="0 0 40 60" aria-hidden="true"><circle cx="20" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/><path d="M16,12 Q11,14 11,19 Q11.5,28 11.5,31 Q11,37 11,44 L13,58 L27,58 L29,44 Q29,37 28.5,31 Q28.5,28 29,19 Q29,14 24,12 Z" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-dasharray="2 2"/></svg><span class="name">Not sure</span><small>That's fine, I can help</small></label>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="btn ghost" data-back>Back</button>
+        <button type="button" class="btn" data-next>Next</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: YOUR STYLE -->
+    <section class="panel step qs" data-step="2" hidden>
+      <h2>Your <em>style</em></h2>
+      <p class="lede">The more information you can give, the better. This applies to every question below. Honest answers are the most useful ones, and there are no wrong answers.</p>
+      <div class="grid">
+        <div class="full">
+          <label for="shopping_difficulties">What (if any) difficulties do you find when buying clothes for yourself?</label>
+          <textarea id="shopping_difficulties" name="shopping_difficulties"></textarea>
+        </div>
+        <div class="full">
+          <span class="label">Sizes by retailer</span>
+          <p class="hint flush">It's very helpful to know what size you wear in different retailers. For example, a size 12 in M&amp;S is very different from a size 12 in Zara. Equally, if the size of your upper and lower body differs, please provide details (e.g. &ldquo;I'm a 16 in tops from Zara but a 12 in bottoms&rdquo;). Likewise with your shoe size: if you are in between sizes, please let me know.</p>
+          <table class="sizes">
+            <thead>
+              <tr><th>Retailer</th><th>Top</th><th>Bottoms</th><th>Shoe</th><th></th></tr>
+            </thead>
+            <tbody id="sizeRows"></tbody>
+          </table>
+          <button type="button" class="link" id="addRow">+ Add a retailer</button>
+        </div>
+        <div class="full">
+          <label for="style_now">How would you describe your current style versus the style you're hoping to achieve?</label>
+          <textarea id="style_now" name="style_now"></textarea>
+        </div>
+        <div class="full">
+          <label for="lifestyle">What is your current lifestyle situation?</label>
+          <p class="hint">If you need clothes for work, please give details of the type of work wardrobe needed, e.g. suits, smart casual, jeans. If you are running around after little ones, standing on the side of a rugby pitch or retired, please let me know.</p>
+          <textarea id="lifestyle" name="lifestyle"></textarea>
+        </div>
+        <div class="full">
+          <label for="style_icons">Are there any style icons, celebrities or influencers whose style you admire?</label>
+          <textarea id="style_icons" name="style_icons"></textarea>
+        </div>
+        <div class="full">
+          <label for="wardrobe_focus">Which part of your wardrobe would you most like help with?</label>
+          <textarea id="wardrobe_focus" name="wardrobe_focus"></textarea>
+        </div>
+        <div class="full">
+          <label for="goal">What is your goal in regards to personal styling? What are you hoping to achieve?&nbsp;<span class="req">*</span></label>
+          <textarea id="goal" name="goal" required></textarea>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn ghost" data-back>Back</button>
+        <button type="button" class="btn" data-next>Next</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: PHOTOS & SEND -->
+    <section class="panel step" data-step="3" hidden>
+      <h2>Photos <em>&amp; send</em></h2>
+      <div class="photoinfo">
+        <p class="pi-title">A few things that help me</p>
+        <ul>
+          <li>If you can, find a spot with natural daylight and a plain background</li>
+          <li>Please avoid dark clothing. Fitted, light-coloured clothes are best</li>
+          <li>Hold your phone upright and level, not tilted up or down, ideally in 3:4, and stand far enough back for me to see you from head to toe</li>
+          <li>A timer on your phone works well, or ask someone to take them for you</li>
+        </ul>
+      </div>
+      <div class="slots" id="slots"></div>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I agree that Stephanie Naughton Personal Styling can store my answers and photos to prepare my styling. I know I can ask for them to be deleted at any time.&nbsp;<span class="req">*</span></span>
+      </label>
+
+      <div class="cf"><div class="cf-turnstile" data-sitekey="0x4AAAAAAGHHEWBXwQ3BgyU6" data-theme="light"></div></div>
+
+      <p class="error" id="error" role="alert"></p>
+
+      <div class="buttons">
+        <button type="button" class="btn ghost" data-back>Back</button>
+        <button type="submit" class="btn" id="submitBtn">Send questionnaire</button>
+      </div>
+    </section>
+  </form>
+
+  <section class="done" id="done" hidden>
+    <h2>Thank <em>you</em></h2>
+    <p>Your questionnaire has arrived. I'll review it and be in touch soon.</p>
+  </section>
+</main>
+
+<template id="sizeRow">
+  <tr>
+    <td><input type="text" name="row_retailer" aria-label="Retailer" placeholder="e.g. M&amp;S"></td>
+    <td><input type="text" name="row_top" aria-label="Top size"></td>
+    <td><input type="text" name="row_bottoms" aria-label="Bottoms size"></td>
+    <td><input type="text" name="row_shoe" aria-label="Shoe size"></td>
+    <td class="x"><button type="button" class="remove" data-remove aria-label="Remove row">×</button></td>
+  </tr>
+</template>
+
+<script>
+/* ---- Configuration: paste your values here ---- */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyRMBD4GlLf6V-8065fbtPEXuG-RuWmHWffKl_FFzYqTGz4ZWEP4hbS7SL42laqENIl/exec';
+/* TEMPORARY, for design only: adds a bar for jumping between steps and stops the form sending.
+   Set to false before the site goes live. */
+const DESIGN_MODE = false;
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const form = $('#intake');
+const panels = $$('.step');
+const bars = $$('#progress span');
+const errorBox = $('#error');
+let step = 0;
+
+/* ---- Steps ---- */
+function show(i, scroll = true) {
+  step = i;
+  panels.forEach((p, k) => p.hidden = k !== i);
+  bars.forEach((b, k) => b.classList.toggle('on', k <= i));
+  $('#stepCount').textContent = `Step ${i + 1} of ${panels.length}`;
+  errorBox.textContent = '';
+  fitDiagram();
+  if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setDone(done) {
+  form.hidden = done;
+  $('#progress').hidden = done;
+  $('#stepCount').hidden = done;
+  $('#done').hidden = !done;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function firstInvalid(i) {
+  return [...panels[i].querySelectorAll('input,textarea')].find(el => !el.checkValidity()) || null;
+}
+
+$$('[data-next]').forEach(btn => btn.addEventListener('click', () => {
+  const bad = firstInvalid(step);
+  if (bad && !DESIGN_MODE) return bad.reportValidity();
+  show(step + 1);
+}));
+$$('[data-back]').forEach(btn => btn.addEventListener('click', () => show(step - 1)));
+
+/* ---- Measurement diagram: scale to fit narrow screens ---- */
+const DG_W = 340, DG_H = 352;
+function fitDiagram() {
+  $$('.dgwrap').forEach(wrap => {
+    const room = wrap.parentElement.clientWidth;
+    if (!room) return; // step is hidden; runs again when it is shown
+    const sc = Math.min(1, room / DG_W);
+    wrap.firstElementChild.style.transform = `scale(${sc})`;
+    wrap.style.width = DG_W * sc + 'px';
+    wrap.style.height = DG_H * sc + 'px';
+  });
+}
+window.addEventListener('resize', fitDiagram);
+
+/* ---- "How to find" shoulder width ---- */
+const helpLink = $('.hf');
+function toggleHelp() {
+  const open = $('#helpbox').hidden;
+  $('#helpbox').hidden = !open;
+  helpLink.setAttribute('aria-expanded', open);
+  $('#r-shoulder').classList.toggle('on', open);
+  $$('#t-bust, #t-waist, #t-hips').forEach(t => t.style.opacity = open ? '.25' : '');
+}
+helpLink.addEventListener('click', toggleHelp);
+helpLink.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleHelp(); }
+});
+
+/* ---- Body shapes: pick several; "Not sure" stands alone ---- */
+const shapeBoxes = $$('input[name=body_shape]');
+shapeBoxes.forEach(cb => cb.addEventListener('change', () => {
+  if (!cb.checked) return;
+  shapeBoxes.forEach(o => {
+    if (o !== cb && (cb.value === 'Not sure' || o.value === 'Not sure')) o.checked = false;
+  });
+}));
+
+/* ---- Retailer size rows ---- */
+function addRow() { $('#sizeRows').append($('#sizeRow').content.cloneNode(true)); }
+$('#addRow').addEventListener('click', addRow);
+$('#sizeRows').addEventListener('click', e => {
+  if (e.target.matches('[data-remove]')) e.target.closest('tr').remove();
+});
+addRow();
+
+/* ---- Photos: one per slot, resized in the browser so uploads stay quick ---- */
+const SLOTS = [
+  { key: 'headshot', title: 'Headshot', sub: 'Your face only, no filter' },
+  { key: 'front', title: 'Full length', sub: 'Facing the camera, feet together or slightly apart, arms relaxed down by your sides, a little away from your body' },
+  { key: 'side', title: 'Side', sub: 'Full length, from the side. Feet together, standing straight, arms down by your sides' },
+  { key: 'back', title: 'Back', sub: 'Full length, from the back. Standing straight, arms down by your sides. Optional' },
+];
+const slotData = {};
+
+async function shrink(file) {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.src = url;
+  try { await img.decode(); } finally { URL.revokeObjectURL(url); }
+  const scale = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round(img.naturalWidth * scale);
+  canvas.height = Math.round(img.naturalHeight * scale);
+  canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+  return { name: file.name, dataUrl: canvas.toDataURL('image/jpeg', 0.85) };
+}
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function renderSlots() {
+  $('#slots').replaceChildren(...SLOTS.map((sl, i) => {
+    const data = slotData[sl.key];
+    const slot = el('label', 'slot' + (data ? ' filled' : ''));
+    const input = el('input', 'sr-only');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.setAttribute('aria-label', `Photo ${i + 1}: ${sl.title}. ${sl.sub}`);
+    input.addEventListener('change', async () => {
+      const file = input.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      try {
+        slotData[sl.key] = { ...await shrink(file), label: sl.key };
+        errorBox.textContent = '';
+      } catch {
+        errorBox.textContent = `I couldn't read ${file.name}. Try a JPG or PNG.`;
+      }
+      renderSlots();
+    });
+    slot.append(input);
+
+    if (data) {
+      const img = el('img');
+      img.src = data.dataUrl;
+      img.alt = sl.title;
+      const del = el('button', null, '×');
+      del.type = 'button';
+      del.setAttribute('aria-label', `Remove ${sl.title} photo`);
+      del.addEventListener('click', e => {
+        e.preventDefault();
+        delete slotData[sl.key];
+        renderSlots();
+      });
+      slot.append(img, el('span', 'cap', `${i + 1}. ${sl.title}`), del);
+    } else {
+      const inner = el('span', 'in');
+      inner.append(el('span', 'num', i + 1), el('span', 't', sl.title), el('span', 'sub', sl.sub), el('span', 'add', 'Add photo'));
+      slot.append(inner);
+    }
+    return slot;
+  }));
+}
+renderSlots();
+
+/* ---- Collect and send ---- */
+function collect() {
+  const fd = new FormData(form);
+  const out = {};
+  for (const [key, value] of fd.entries()) {
+    if (typeof value !== 'string' || key.startsWith('row_') || key === 'cf-turnstile-response') continue;
+    out[key] = value.trim();
+  }
+  out.body_shape = fd.getAll('body_shape').join(', ');
+  out.turnstile = fd.get('cf-turnstile-response') || '';
+  out.sizes = $$('#sizeRows tr').map(tr => {
+    const v = n => tr.querySelector(`[name=row_${n}]`).value.trim();
+    return { retailer: v('retailer'), top: v('top'), bottoms: v('bottoms'), shoe: v('shoe') };
+  }).filter(r => r.retailer || r.top || r.bottoms || r.shoe);
+  out.photos = SLOTS.map(sl => slotData[sl.key]).filter(Boolean);
+  return out;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  errorBox.textContent = '';
+
+  if (DESIGN_MODE) { return setDone(true); } // design mode: don't send
+
+  for (let i = 0; i < panels.length; i++) {
+    const bad = firstInvalid(i);
+    if (bad) { show(i); return bad.reportValidity(); }
+  }
+
+  const btn = $('#submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // avoids a CORS preflight
+      body: JSON.stringify(collect()),
+    });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.error);
+    setDone(true);
+  } catch (err) {
+    errorBox.textContent = err.message || 'Something went wrong. Please try again.';
+    if (window.turnstile) turnstile.reset();
+    btn.disabled = false;
+    btn.textContent = 'Send questionnaire';
+  }
+});
+
+/* ---- Design mode: step jumper (temporary) ---- */
+if (DESIGN_MODE) {
+  const bar = el('div', null, 'Design');
+  bar.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:99;display:flex;gap:4px;align-items:center;background:#3B302A;color:#FBF8F3;padding:6px 8px;border-radius:6px;font:11px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase';
+  const go = (label, fn) => {
+    const b = el('button', null, label);
+    b.type = 'button';
+    b.style.cssText = 'background:transparent;border:1px solid #8C7565;color:#FBF8F3;padding:3px 8px;border-radius:4px;font:inherit;cursor:pointer';
+    b.addEventListener('click', fn);
+    bar.append(b);
+  };
+  [0, 1, 2, 3].forEach(i => go(String(i + 1), () => { setDone(false); show(i); }));
+  go('Thanks', () => { setDone(true); });
+  document.body.append(bar);
+}
+
+show(0, false);
+</script>
+</body>
+</html>
