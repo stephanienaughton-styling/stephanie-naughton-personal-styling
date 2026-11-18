@@ -131,6 +131,14 @@
   .btn.ghost{background:transparent;color:var(--ink)}
   .btn:disabled{opacity:.5;cursor:wait}
   .btn:focus-visible,.link:focus-visible,.remove:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
+  .sending{position:fixed;inset:0;z-index:100;background:rgba(244,238,230,.96);display:none;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .sending.on{display:flex}
+  .sending .box{max-width:360px;width:100%}
+  .sending h2{font:italic 300 28px Newsreader,Georgia,serif;margin:0 0 10px;color:var(--ink)}
+  .sending p{margin:0 0 22px;font-size:15px;line-height:1.5;color:var(--muted)}
+  .sending .bar{height:2px;background:var(--taupe-soft);overflow:hidden}
+  .sending .bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .6s ease-out}
+  .sending .msg{margin-top:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
   .error{color:var(--danger);font-size:14px;min-height:1.4em;margin:18px 0 0;text-align:center}
   .cf{margin-top:26px;display:flex;justify-content:center}
 
@@ -373,6 +381,12 @@
       </div>
     </section>
   </form>
+  <div class="sending" id="sending" role="status" aria-live="polite"><div class="box">
+    <h2>Sending your questionnaire</h2>
+    <p>This can take up to half a minute while your photos upload. Please keep this page open.</p>
+    <div class="bar"><i id="sendBar"></i></div>
+    <div class="msg" id="sendMsg">Uploading</div>
+  </div></div>
 
   <section class="done" id="done" hidden>
     <h2>Thank <em>you</em></h2>
@@ -571,6 +585,22 @@ function collect() {
   return out;
 }
 
+/* Progress overlay: the upload takes a while, so show that it is working. */
+function startSending() {
+  const box = $('#sending'), bar = $('#sendBar'), msg = $('#sendMsg');
+  const steps = [[0, 8, 'Uploading'], [6000, 45, 'Saving your answers'], [12000, 70, 'Filing your photos'], [20000, 88, 'Nearly there']];
+  const warn = e => { e.preventDefault(); e.returnValue = ''; };
+  window.addEventListener('beforeunload', warn);
+  box.classList.add('on');
+  const timers = steps.map(([t, w, m]) => setTimeout(() => { bar.style.width = w + '%'; msg.textContent = m; }, t));
+  return ok => {
+    timers.forEach(clearTimeout);
+    window.removeEventListener('beforeunload', warn);
+    if (ok) { bar.style.width = '100%'; msg.textContent = 'Done'; }
+    setTimeout(() => box.classList.remove('on'), ok ? 400 : 0);
+  };
+}
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
   errorBox.textContent = '';
@@ -585,6 +615,7 @@ form.addEventListener('submit', async e => {
   const btn = $('#submitBtn');
   btn.disabled = true;
   btn.textContent = 'Sending…';
+  const stopSending = startSending();
 
   try {
     const res = await fetch(ENDPOINT, {
@@ -594,8 +625,10 @@ form.addEventListener('submit', async e => {
     });
     const out = await res.json();
     if (!out.ok) throw new Error(out.error);
+    stopSending(true);
     setDone(true);
   } catch (err) {
+    stopSending(false);
     errorBox.textContent = err.message || 'Something went wrong. Please try again.';
     if (window.turnstile) turnstile.reset();
     btn.disabled = false;
