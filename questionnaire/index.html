@@ -18,6 +18,7 @@
   }
   *{box-sizing:border-box}
   [hidden]{display:none !important}
+  html{overscroll-behavior-y:none}
   body{margin:0;background:var(--cream);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:660px;margin:0 auto;padding:56px 20px 88px}
   .mono{display:flex;justify-content:center;align-items:center;gap:12px;margin:0 0 36px}
@@ -429,7 +430,13 @@ function show(i, scroll = true) {
   $('#stepCount').textContent = `Step ${i + 1} of ${panels.length}`;
   errorBox.textContent = '';
   fitDiagram();
-  if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (scroll) toTop();
+  saveSoon();
+}
+function toTop() {
+  // jump (not glide) once the new step has laid out, so it can't stop part-way down the page
+  window.scrollTo(0, 0);
+  requestAnimationFrame(() => { window.scrollTo(0, 0); setTimeout(() => window.scrollTo(0, 0), 60); });
 }
 
 function setDone(done) {
@@ -437,7 +444,7 @@ function setDone(done) {
   $('#progress').hidden = done;
   $('#stepCount').hidden = done;
   $('#done').hidden = !done;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  toTop();
 }
 
 function firstInvalid(i) {
@@ -510,6 +517,61 @@ $('#sizeRows').addEventListener('click', e => {
   if (e.target.matches('[data-remove]')) e.target.closest('tr').remove();
 });
 addRow();
+
+/* ---- Keep answers if the page is refreshed by accident (pull-to-refresh, swipe back) ---- */
+var SAVE_KEY = 'sn-questionnaire-v1', SAVE_DAYS = 3;
+var saveTimer = null;
+function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 300); }
+function saveNow() {
+  try {
+    const d = { ts: Date.now(), step, fields: {}, checks: {}, sizes: [] };
+    $$('input,textarea', form).forEach(el => {
+      const n = el.name;
+      if (!n || n === 'website' || n.startsWith('row_') || el.type === 'file' || n === 'cf-turnstile-response') return;
+      if (el.type === 'checkbox' || el.type === 'radio') d.checks[n + '|' + el.value] = el.checked;
+      else d.fields[n] = el.value;
+    });
+    $$('#sizeRows tr').forEach(tr => d.sizes.push(['retailer', 'top', 'bottoms', 'shoe'].map(k => tr.querySelector(`[name=row_${k}]`).value)));
+    localStorage.setItem(SAVE_KEY, JSON.stringify(d));
+  } catch (e) { /* storage unavailable: carry on */ }
+}
+function restoreSaved() {
+  try {
+    const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+    if (!d || Date.now() - d.ts > SAVE_DAYS * 864e5) return;
+    $$('input,textarea', form).forEach(el => {
+      const n = el.name;
+      if (!n) return;
+      if (el.type === 'checkbox' || el.type === 'radio') { if ((n + '|' + el.value) in d.checks) el.checked = d.checks[n + '|' + el.value]; }
+      else if (n in d.fields) el.value = d.fields[n];
+    });
+    if (d.sizes && d.sizes.length) {
+      $('#sizeRows').innerHTML = '';
+      d.sizes.forEach(r => { addRow(); const tr = $('#sizeRows').lastElementChild; ['retailer', 'top', 'bottoms', 'shoe'].forEach((k, i) => tr.querySelector(`[name=row_${k}]`).value = r[i] || ''); });
+    }
+    if (Number.isInteger(d.step) && d.step > 0 && d.step < panels.length) show(d.step, false);
+  } catch (e) { /* ignore a bad save */ }
+}
+function clearSaved() { try { localStorage.removeItem(SAVE_KEY); } catch (e) {} }
+
+/* ---- Keyboard "Next / Go": move to the next field instead of submitting the form ---- */
+form.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const el = e.target;
+  if (!el.matches('input') || el.matches('[type=checkbox],[type=radio],[type=file],[type=button],[type=submit]')) return;
+  e.preventDefault();
+  const fields = [...panels[step].querySelectorAll('input,textarea')]
+    .filter(f => !f.matches('[type=checkbox],[type=radio],[type=file],[type=hidden],.hp') && f.offsetParent !== null);
+  const next = fields[fields.indexOf(el) + 1];
+  if (next) { next.focus(); return; }
+  el.blur(); // last typed field on this step: close the keyboard and show what comes next
+  const after = $('#shapeLabel');
+  if (after && panels[step].contains(after)) after.scrollIntoView({ block: 'start', behavior: 'smooth' });
+});
+form.addEventListener('input', saveSoon);
+form.addEventListener('change', saveSoon);
+$('#sizeRows').addEventListener('click', saveSoon);
+restoreSaved();
 
 /* ---- Photos: one per slot, resized in the browser so uploads stay quick ---- */
 const SLOTS = [
@@ -643,6 +705,7 @@ form.addEventListener('submit', async e => {
     const out = await res.json();
     if (!out.ok) throw new Error(out.error);
     stopSending(true);
+    clearSaved();
     setDone(true);
   } catch (err) {
     stopSending(false);
@@ -669,7 +732,7 @@ if (DESIGN_MODE) {
   document.body.append(bar);
 }
 
-show(0, false);
+if (step === 0 || step === undefined) show(0, false);
 </script>
 </body>
 </html>
