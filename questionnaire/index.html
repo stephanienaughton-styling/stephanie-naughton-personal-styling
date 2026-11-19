@@ -59,11 +59,11 @@
 
   /* body shape cards */
   .shapes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  label.shape{position:relative;display:block;font:400 16px/1.6 Archivo,system-ui,sans-serif;border:1px solid var(--taupe-soft);background:transparent;padding:18px 10px 16px;text-align:center;cursor:pointer;transition:all .2s;text-transform:none;letter-spacing:0;color:var(--ink);margin:0}
+  label.shape{position:relative;display:block;font:400 16px/1.6 Archivo,system-ui,sans-serif;border:1px solid var(--taupe-soft);background:transparent;padding:22px 8px 16px;text-align:center;cursor:pointer;transition:all .2s;text-transform:none;letter-spacing:0;color:var(--ink);margin:0}
   .shape input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-  .shape .name{font-family:Newsreader,serif;font-size:21px;font-style:italic;display:block}
+  .shape .name{font-family:Newsreader,serif;font-size:19px;font-style:italic;display:block}
   .shape small{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
-  .shape svg{display:block;width:34px;height:54px;margin:0 auto 10px;color:var(--taupe);transition:color .2s}
+  .shape svg{display:block;width:104px;height:156px;margin:0 auto 14px;color:var(--taupe);transition:color .2s}
   .shape:has(input:checked) svg{color:#fff}
   .shape:hover{border-color:var(--taupe)}
   .shape:has(input:checked){background:var(--taupe);border-color:var(--taupe);color:#fff}
@@ -155,6 +155,7 @@
     .grid{grid-template-columns:1fr}
     .grid.two{grid-template-columns:1fr 1fr;gap:14px 18px}
     .shapes{grid-template-columns:repeat(2,1fr)}
+    .shape svg{width:88px;height:132px}
     .buttons{flex-direction:column-reverse;align-items:stretch}
     .btn{width:100%}
   }
