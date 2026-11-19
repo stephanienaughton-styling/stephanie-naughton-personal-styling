@@ -473,6 +473,21 @@ function toggleHelp() {
   $('#r-shoulder').classList.toggle('on', open);
   $$('#t-bust, #t-waist, #t-hips').forEach(t => t.style.opacity = open ? '.25' : '');
 }
+
+/* ---- Number keypads: stop the page re-centring the field every time one is tapped ---- */
+$$('input[type=number]').forEach(inp => inp.addEventListener('focus', () => {
+  const y0 = window.scrollY;
+  [0, 80, 180, 320].forEach(t => setTimeout(() => { if (document.activeElement === inp) window.scrollTo(0, y0); }, t));
+  // once the keypad is up, nudge only as far as needed to keep the field visible
+  setTimeout(() => {
+    if (document.activeElement !== inp) return;
+    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    const r = inp.getBoundingClientRect();
+    if (r.bottom > vh - 16) window.scrollBy(0, r.bottom - (vh - 16));
+    else if (r.top < 16) window.scrollBy(0, r.top - 16);
+  }, 420);
+}));
+
 helpLink.addEventListener('click', toggleHelp);
 helpLink.addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleHelp(); }
